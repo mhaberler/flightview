@@ -1,3 +1,9 @@
+# Test deployment of Cesium to serve local 3D Tiles
+
+This repository is a fork of the [cesium-webpack-example](https://github.com/CesiumGS/cesium-webpack-example) and it has been adapted to serve 3D Tiles from a local directory, instead of Cesium Ion.
+
+---
+
 # cesium-webpack-example
 
 A minimal recommended setup for an applications using [Cesium](https://cesium.com) with [Webpack](https://webpack.js.org/concepts/).
