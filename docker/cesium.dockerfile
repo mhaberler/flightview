@@ -1,5 +1,6 @@
 FROM node:18.12.1
 
+# Install the cesium app
 RUN mkdir "/app"
 WORKDIR "/app"
 COPY package.json ./

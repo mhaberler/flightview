@@ -2,6 +2,13 @@
 
 This repository is a fork of the [cesium-webpack-example](https://github.com/CesiumGS/cesium-webpack-example) and it has been adapted to serve 3D Tiles from a local directory, instead of Cesium Ion.
 
+## Notes
+
+Cartesian coordinates are in EPSG:4978. Degrees are in EPSG:4979.
+
+`Cartesian3(1215107.76, -4736682.90, 4081926.09` does not work. 
+Use `Cartesian3.fromDegrees(-75.6120945, 0, 400)` to set the location from a EPSG:4979 point.
+
 ---
 
 # cesium-webpack-example

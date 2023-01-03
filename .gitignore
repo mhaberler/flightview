@@ -5,3 +5,4 @@ package-lock.json
 
 # IDE
 .idea
+.run
