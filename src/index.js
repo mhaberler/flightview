@@ -7,7 +7,9 @@ import "../src/css/main.css"
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
-    terrainProvider: createWorldTerrain()
+    terrainProvider: createWorldTerrain(),
+    // https://cesium.com/blog/2018/01/24/cesium-scene-rendering-performance/#enabling-request-render-mode
+    requestRenderMode : true
 });
 
 viewer.scene.globe.depthTestAgainstTerrain = true;
