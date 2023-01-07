@@ -8,7 +8,7 @@ import "../src/css/main.css"
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
     // terrainProvider: createWorldTerrain(),
-    shadows: true,
+    shadows: false,
     timeline: false,
     // https://cesium.com/blog/2018/01/24/cesium-scene-rendering-performance/#enabling-request-render-mode
     requestRenderMode: true,
@@ -23,20 +23,20 @@ const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 const tileset = viewer.scene.primitives.add(new Cesium3DTileset({
     // url: 'http://localhost:8003/3dtiles/tileset.json',
     url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
-    enableDebugWireframe: true,
+    enableDebugWireframe: false,
     debugShowBoundingVolume: true,
     debugShowContentBoundingVolume: false,
 }));
 
-// https://cesium.com/learn/cesiumjs-learn/cesiumjs-3d-tiles-styling/
-tileset.style = new Cesium3DTileStyle({
-  color: {
-    conditions: [
-      // ["${name} === 'Crown Entertainment Complex'", "color('red')"],
-      ["true", "color('white')"],
-    ],
-  },
-});
+// // https://cesium.com/learn/cesiumjs-learn/cesiumjs-3d-tiles-styling/
+// tileset.style = new Cesium3DTileStyle({
+//   color: {
+//     conditions: [
+//       // ["${name} === 'Crown Entertainment Complex'", "color('red')"],
+//       ["true", "color('white')"],
+//     ],
+//   },
+// });
 
 // Fly the camera to Delft.
 // viewer.camera.flyTo({
