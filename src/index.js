@@ -7,7 +7,7 @@ import "../src/css/main.css"
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
-    terrainProvider: createWorldTerrain(),
+    // terrainProvider: createWorldTerrain(),
     shadows: false,
     timeline: false,
     // https://cesium.com/blog/2018/01/24/cesium-scene-rendering-performance/#enabling-request-render-mode
@@ -20,9 +20,17 @@ viewer.extend(viewerCesium3DTilesInspectorMixin);
 const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 
 // 3dtiles.data is a service created by docker compose and /3dtiles is mounted there
-const tileset = viewer.scene.primitives.add(new Cesium3DTileset({
-    // url: 'http://localhost:8003/3dtiles/tileset.json',
-    url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
+const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
+    url: 'http://localhost:8003/3dtiles/tileset.json',
+    // url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
+    enableDebugWireframe: false,
+    debugShowBoundingVolume: false,
+    debugShowContentBoundingVolume: false,
+}));
+
+const tileset_terrain = viewer.scene.primitives.add(new Cesium3DTileset({
+    url: 'http://localhost:8004/3dtiles/tileset.json',
+    // url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
     enableDebugWireframe: false,
     debugShowBoundingVolume: false,
     debugShowContentBoundingVolume: false,
@@ -47,9 +55,9 @@ const tileset = viewer.scene.primitives.add(new Cesium3DTileset({
 //     }
 // });
 
-tileset.readyPromise.then(function () {
+tileset_buildings.readyPromise.then(function () {
     viewer.zoomTo(
-        tileset,
+        tileset_buildings,
         new HeadingPitchRange(
             0.0,
             -0.5,
