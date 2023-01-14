@@ -12,7 +12,8 @@ services:
     image: nginx:1.22
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - /data/3DBAG/out_tmp/glb:/3dtiles
+#      - /data/3DBAG/out_tmp/glb:/3dtiles
+      - /data/work/bdukai/3dbag_v2103_features/3dtiles:/3dtiles
     ports:
       - "8003:80"
     networks:

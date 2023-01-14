@@ -7,7 +7,7 @@ import "../src/css/main.css"
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
-    // terrainProvider: createWorldTerrain(),
+    terrainProvider: createWorldTerrain(),
     shadows: false,
     timeline: false,
     // https://cesium.com/blog/2018/01/24/cesium-scene-rendering-performance/#enabling-request-render-mode
@@ -24,7 +24,7 @@ const tileset = viewer.scene.primitives.add(new Cesium3DTileset({
     // url: 'http://localhost:8003/3dtiles/tileset.json',
     url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
     enableDebugWireframe: false,
-    debugShowBoundingVolume: true,
+    debugShowBoundingVolume: false,
     debugShowContentBoundingVolume: false,
 }));
 
