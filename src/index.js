@@ -21,16 +21,16 @@ const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 
 // 3dtiles.data is a service created by docker compose and /3dtiles is mounted there
 const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
-    url: 'http://localhost:8003/3dtiles/tileset.json',
-    // url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
+    // url: 'http://localhost:8003/3dtiles/tileset.json',
+    url: 'https://data.3dgi.xyz/3dtiles-test-data/buildings/tileset.json',
     enableDebugWireframe: false,
     debugShowBoundingVolume: false,
     debugShowContentBoundingVolume: false,
 }));
 
 const tileset_terrain = viewer.scene.primitives.add(new Cesium3DTileset({
-    url: 'http://localhost:8004/3dtiles/tileset.json',
-    // url: 'https://data.3dgi.xyz/3dtiles-test-data/tileset.json',
+    // url: 'http://localhost:8004/3dtiles/tileset.json',
+    url: 'https://data.3dgi.xyz/3dtiles-test-data/terrain/tileset.json',
     enableDebugWireframe: false,
     debugShowBoundingVolume: false,
     debugShowContentBoundingVolume: false,
