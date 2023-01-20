@@ -1,7 +1,10 @@
-version: "3.9"
+version: "3.8"
 services:
   3dtiles.app:
     image: test-cesium-3dtiles:cesium
+    build:
+      context: .
+      dockerfile: cesium.dockerfile
     ports:
       - "8080:8080"
     networks:
