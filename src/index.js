@@ -60,22 +60,22 @@ const tileset_terrain = viewer.scene.primitives.add(new Cesium3DTileset({
 // });
 
 // Fly the camera to Delft.
-// viewer.camera.flyTo({
-//     destination: Cartesian3.fromDegrees(4.365306, 52.005689, 400),
-//     orientation: {
-//         heading: Math.toRadians(0.0),
-//         pitch: Math.toRadians(-15.0),
-//     }
-// });
-
-tileset_buildings.readyPromise.then(function () {
-    viewer.zoomTo(
-        tileset_buildings,
-        new HeadingPitchRange(
-            0.0,
-            -0.5,
-            400
-            // tileset.boundingSphere.radius / 4.0
-        )
-    );
+viewer.camera.flyTo({
+    destination: Cartesian3.fromDegrees(4.267588, 52.062515, 1000),
+    orientation: {
+        heading: Math.toRadians(0.0),
+        pitch: Math.toRadians(-35.0),
+    }
 });
+
+// tileset_terrain.readyPromise.then(function () {
+//     viewer.zoomTo(
+//         tileset_terrain,
+//         new HeadingPitchRange(
+//             0.0,
+//             -0.5,
+//             400
+//             // tileset.boundingSphere.radius / 4.0
+//         )
+//     );
+// });
