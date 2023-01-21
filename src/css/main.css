@@ -5,3 +5,17 @@ html, body, #cesiumContainer {
 	padding: 0;
 	overflow: hidden;
 }
+
+/* .cesium-widget-credits{
+	display:none !important;
+} */
+
+.creditContainer {
+	width: 175;
+	height: 83px;
+	position: fixed;
+	z-index: 99999;
+	/* background: url(https://3dgi.nl/img/Logo-02-white.png) 100% 100% no-repeat;
+	background-size: cover; */
+	top: 0px;
+}
