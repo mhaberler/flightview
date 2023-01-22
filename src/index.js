@@ -59,14 +59,22 @@ const tileset_terrain = viewer.scene.primitives.add(new Cesium3DTileset({
 //   },
 // });
 
-// Fly the camera to Delft.
-viewer.camera.flyTo({
-    destination: Cartesian3.fromDegrees(4.267588, 52.062515, 1000),
+// Set the camera view to Den Haag.
+viewer.camera.setView({
+    destination : Cartesian3.fromDegrees(4.267588, 52.062515, 1000),
     orientation: {
-        heading: Math.toRadians(0.0),
-        pitch: Math.toRadians(-35.0),
+        heading : Math.toRadians(0.0), // east, default value is 0.0 (north)
+        pitch : Math.toRadians(-36),    // default value (looking down)
+        roll : 0.0                             // default value
     }
 });
+// viewer.camera.flyTo({
+//     destination: Cartesian3.fromDegrees(4.267588, 52.062515, 1000),
+//     orientation: {
+//         heading: Math.toRadians(0.0),
+//         pitch: Math.toRadians(-35.0),
+//     }
+// });
 
 // tileset_terrain.readyPromise.then(function () {
 //     viewer.zoomTo(
