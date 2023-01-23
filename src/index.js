@@ -11,7 +11,7 @@ import Logo3dgi from "../src/img/logo-3dgi.png"
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
     shadows: false,
-    timeline: false,
+    timeline: true,
     animation: false,
     baseLayerPicker: false,
     sceneModePicker: false,
