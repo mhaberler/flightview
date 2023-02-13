@@ -21,7 +21,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack serve --config webpack.config.js --open"
+    "start": "webpack serve --config webpack.config.js --open",
+    "start_gltf": "webpack serve --config webpack.config_gltf_structural_metadata.js --open"
   },
   "devDependencies": {
     "cesium": "^1.101.0",
