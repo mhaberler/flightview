@@ -26,13 +26,14 @@ function createTileset(subdirectory) {
   // Create the tileset, and move it to a certain position on the globe
   currentTileset = viewer.scene.primitives.add(
     new Cesium3DTileset({
-      url: `http://localhost:8003/glTF/EXT_structural_metadata/${subdirectory}/tileset.json`,
+      url: `http://localhost:8003/tileset.json`,
+      // url: `http://localhost:8003/glTF/EXT_structural_metadata/${subdirectory}/tileset.json`,
       debugShowBoundingVolume: true,
     })
   );
-  currentTileset.modelMatrix = Transforms.eastNorthUpToFixedFrame(
-    Cartesian3.fromDegrees(-75.152325, 39.94704, 0)
-  );
+  // currentTileset.modelMatrix = Transforms.eastNorthUpToFixedFrame(
+  //   Cartesian3.fromDegrees(-75.152325, 39.94704, 0)
+  // );
   const offset = new HeadingPitchRange(
     0,
     Math.toRadians(-22.5),
@@ -83,6 +84,7 @@ function createFeatureHtml(title, feature) {
     return `(No properties for ${title})<br>`;
   }
   let html = `<b>${title}:</b><br>`;
+  html += `&nbsp;&nbsp;_FEATURE_ID : ${feature.featureId}<br>`;
   for (let i = 0; i < propertyKeys.length; i++) {
     const propertyKey = propertyKeys[i];
     const propertyValue = feature.getProperty(propertyKey);

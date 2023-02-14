@@ -35,20 +35,20 @@ viewer.scene.frameState.creditDisplay.addDefaultCredit(credit)
 // const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 
 const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
-    url: 'http://localhost:8003/3dtiles/tileset.json',
-    // url: 'https://data.3dgi.xyz/3dtiles-test-data/tilesets/buildings/tileset.json',
+    // url: 'http://localhost:8003/3dtiles/tileset.json',
+    url: 'https://data.3dgi.xyz/3dtiles-test-data/tilesets/buildings/tileset.json',
     enableDebugWireframe: false,
     debugShowBoundingVolume: false,
     debugShowContentBoundingVolume: false,
 }));
 
-// const tileset_terrain = viewer.scene.primitives.add(new Cesium3DTileset({
-//     url: 'http://localhost:8004/3dtiles/tileset.json',
-//     // url: 'https://data.3dgi.xyz/3dtiles-test-data/tilesets/terrain/tileset.json',
-//     enableDebugWireframe: false,
-//     debugShowBoundingVolume: false,
-//     debugShowContentBoundingVolume: false,
-// }));
+const tileset_terrain = viewer.scene.primitives.add(new Cesium3DTileset({
+    // url: 'http://localhost:8004/3dtiles/tileset.json',
+    url: 'https://data.3dgi.xyz/3dtiles-test-data/tilesets/terrain/tileset.json',
+    enableDebugWireframe: false,
+    debugShowBoundingVolume: false,
+    debugShowContentBoundingVolume: false,
+}));
 
 // Set the camera view to Den Haag.
 viewer.camera.setView({
@@ -81,6 +81,47 @@ const selected = {
   originalColor: new Color(),
 };
 
+// Create an HTML element that will serve as the
+// tooltip that displays the feature information
+function createTooltip() {
+  const tooltip = document.createElement("div");
+  viewer.container.appendChild(tooltip);
+  tooltip.style.backgroundColor = "black";
+  tooltip.style.color = "white";
+  tooltip.style.position = "absolute";
+  tooltip.style.left = "0";
+  tooltip.style.top = "0";
+  tooltip.style.padding = "14px";
+  tooltip.style["pointer-events"] = "none";
+  tooltip.style["block-size"] = "fit-content";
+  return tooltip;
+}
+const tooltip = createTooltip();
+
+// Show the given HTML content in the tooltip
+// at the given screen position
+function showTooltip(screenX, screenY, htmlContent) {
+  tooltip.style.display = "block";
+  tooltip.style.left = `${screenX}px`;
+  tooltip.style.top = `${screenY}px`;
+  tooltip.innerHTML = htmlContent;
+}
+
+// Create an HTML string that contains information
+// about the given feature, under the given title
+function createFeatureHtml(title, feature) {
+  if (!defined(feature)) {
+    return `(No ${title})<br>`;
+  }
+  const propertyKeys = feature.getPropertyIds();
+  if (!defined(propertyKeys)) {
+    return `(No properties for ${title})<br>`;
+  }
+  let html = `<b>${title}:</b><br>`;
+  html += `&nbsp;&nbsp;_FEATURE_ID : ${feature.featureId}<br>`;
+  return html;
+}
+
 handler.setInputAction(function (movement) {
   if (enablePicking) {
     // If a feature was previously highlighted, undo the highlight
@@ -99,6 +140,11 @@ handler.setInputAction(function (movement) {
 
     if (isBuildingFeature) {
       // Highlight the feature if it's not already selected.
+              let tooltipText = "";
+      tooltipText += createFeatureHtml("Feature", feature);
+        const screenX = movement.endPosition.x;
+        const screenY = movement.endPosition.y;
+        showTooltip(screenX, screenY, tooltipText);
       if (feature !== selected.feature) {
         highlighted.feature = feature;
         Color.clone(feature.color, highlighted.originalColor);
