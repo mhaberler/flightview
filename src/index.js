@@ -31,8 +31,8 @@ viewer.scene.frameState.creditDisplay.addDefaultCredit(credit)
 
 // viewer.scene.globe.depthTestAgainstTerrain = true;
 
-// viewer.extend(viewerCesium3DTilesInspectorMixin);
-// const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
+viewer.extend(viewerCesium3DTilesInspectorMixin);
+const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 
 const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
     url: 'http://localhost:8003/3dtiles/tileset.json',
@@ -50,16 +50,6 @@ const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
 //     debugShowContentBoundingVolume: false,
 // }));
 
-// // https://cesium.com/learn/cesiumjs-learn/cesiumjs-3d-tiles-styling/
-// tileset.style = new Cesium3DTileStyle({
-//   color: {
-//     conditions: [
-//       // ["${name} === 'Crown Entertainment Complex'", "color('red')"],
-//       ["true", "color('white')"],
-//     ],
-//   },
-// });
-
 // Set the camera view to Den Haag.
 viewer.camera.setView({
     destination : Cartesian3.fromDegrees(4.267588, 52.062515, 1000),
@@ -69,77 +59,6 @@ viewer.camera.setView({
         roll : 0.0                             // default value
     }
 });
-
-// // Create an HTML element that will serve as the
-// // tooltip that displays the metadata information
-// function createTooltip() {
-//   const tooltip = document.createElement("div");
-//   viewer.container.appendChild(tooltip);
-//   tooltip.style.backgroundColor = "black";
-//   tooltip.style.color = "white";
-//   tooltip.style.position = "absolute";
-//   tooltip.style.left = "0";
-//   tooltip.style.top = "0";
-//   tooltip.style.padding = "14px";
-//   tooltip.style["pointer-events"] = "none";
-//   tooltip.style["block-size"] = "fit-content";
-//   return tooltip;
-// }
-// const tooltip = createTooltip();
-//
-// // Show the given HTML content in the tooltip
-// // at the given screen position
-// function showTooltip(screenX, screenY, htmlContent) {
-//   tooltip.style.display = "block";
-//   tooltip.style.left = `${screenX}px`;
-//   tooltip.style.top = `${screenY}px`;
-//   tooltip.innerHTML = htmlContent;
-// }
-//
-// // Create an HTML string that contains information
-// // about the given metadata, under the given title
-// function createMetadataHtml(title, metadata) {
-//   if (!defined(metadata)) {
-//     return `(No ${title})<br>`;
-//   }
-//   const propertyKeys = metadata.getPropertyIds();
-//   if (!defined(propertyKeys)) {
-//     return `(No properties for ${title})<br>`;
-//   }
-//   let html = `<b>${title}:</b><br>`;
-//   for (let i = 0; i < propertyKeys.length; i++) {
-//     const propertyKey = propertyKeys[i];
-//     const propertyValue = metadata.getProperty(propertyKey);
-//     html += `&nbsp;&nbsp;${propertyKey} : ${propertyValue}<br>`;
-//   }
-//   return html;
-// }
-//
-// // Install the handler that will check the element that is
-// // under the mouse cursor when the mouse is moved, and
-// // add any metadata that it contains to the label.
-// const handler = new ScreenSpaceEventHandler(viewer.scene.canvas);
-// handler.setInputAction(function (movement) {
-//   let tooltipText = "";
-//   const picked = viewer.scene.pick(movement.endPosition);
-//
-//   const tilesetMetadata = picked?.content?.tileset?.metadata;
-//   tooltipText += createMetadataHtml("Tileset metadata", tilesetMetadata);
-//
-//   const tileMetadata = picked?.content?.tile?.metadata;
-//   tooltipText += createMetadataHtml("Tile metadata", tileMetadata);
-//
-//   const groupMetadata = picked?.content?.group?.metadata;
-//   tooltipText += createMetadataHtml("Group metadata", groupMetadata);
-//
-//   const contentMetadata = picked?.content?.metadata;
-//   tooltipText += createMetadataHtml("Content metadata", contentMetadata);
-//
-//   const screenX = movement.endPosition.x;
-//   const screenY = movement.endPosition.y;
-//   showTooltip(screenX, screenY, tooltipText);
-// }, ScreenSpaceEventType.MOUSE_MOVE);
-
 
 // Create an HTML element that will serve as the
 // tooltip that displays the feature information
@@ -218,205 +137,14 @@ handler.setInputAction(function (movement) {
   showTooltip(screenX, screenY, tooltipText);
 }, ScreenSpaceEventType.MOUSE_MOVE);
 
-
-
-// tileset_terrain.readyPromise.then(function () {
-//     viewer.zoomTo(
-//         tileset_terrain,
-//         new HeadingPitchRange(
-//             0.0,
-//             -0.5,
-//             400
-//             // tileset.boundingSphere.radius / 4.0
-//         )
-//     );
-// });
-
-// --- Style ---
-
-// const buildingStyle = new Cesium3DTileStyle({
-//   color: {
-//     conditions: [
-//       ["${bouwjaar} !== undefined && ${bouwjaar} < 1700", "color('#f5fd2d')"],
-//       [
-//         "${bouwjaar} !== undefined && ${bouwjaar} >= 1700 && ${bouwjaar} < 1800",
-//         "color('#d3a34a')",
-//       ],
-//       [
-//         "${bouwjaar} !== undefined && ${bouwjaar} >= 1800 && ${bouwjaar} < 1900",
-//         "color('#947e75')",
-//       ],
-//       [
-//         "${bouwjaar} !== undefined && ${bouwjaar} >= 1900 && ${bouwjaar} < 2000",
-//         "color('#565a9f')",
-//       ],
-//       ["${bouwjaar} !== undefined && ${bouwjaar} > 2000", "color('#223bc3')"],
-//       ["true", "color('white')"],
-//     ],
-//   },
-// });
-
-// --- Picking ---
-
-// let enablePicking = true;
-// const handler = new ScreenSpaceEventHandler(viewer.scene.canvas);
-
-// const metadataOverlay = document.createElement("div");
-// viewer.container.appendChild(metadataOverlay);
-// metadataOverlay.className = "backdrop";
-// metadataOverlay.style.display = "none";
-// metadataOverlay.style.position = "absolute";
-// metadataOverlay.style.bottom = "0";
-// metadataOverlay.style.left = "0";
-// metadataOverlay.style["pointer-events"] = "none";
-// metadataOverlay.style.padding = "4px";
-// metadataOverlay.style.backgroundColor = "#303030";
-// metadataOverlay.style.whiteSpace = "pre-line";
-// metadataOverlay.style.fontSize = "16px";
-// metadataOverlay.style.borderRadius = "4px";
-//
-// let tableHtmlScratch;
-// let materialsScratch;
-// let weightsScratch;
-// let i;
-//
-// const highlighted = {
-//   feature: undefined,
-//   originalColor: new Color(),
-// };
-//
-// const selected = {
-//   feature: undefined,
-//   originalColor: new Color(),
-// };
-
-// handler.setInputAction(function (movement) {
-//   if (enablePicking) {
-//     // If a feature was previously highlighted, undo the highlight
-//     if (defined(highlighted.feature)) {
-//       highlighted.feature.color = highlighted.originalColor;
-//       highlighted.feature = undefined;
-//     }
-//
-//     const feature = viewer.scene.pick(movement.endPosition);
-//     const featurePicked = feature instanceof Cesium3DTileFeature;
-//
-//     const isTerrainFeature =
-//       featurePicked && feature.hasProperty("substrates");
-//     const isBuildingFeature =
-//       featurePicked && feature.hasProperty("bagpandid");
-//
-//     if (isTerrainFeature) {
-//       // TODO: need to adjust the terrain attributes for 3DNL
-//       metadataOverlay.style.display = "block";
-//       metadataOverlay.style.bottom = `${
-//         viewer.canvas.clientHeight - movement.endPosition.y
-//       }px`;
-//       metadataOverlay.style.left = `${movement.endPosition.x}px`;
-//
-//       tableHtmlScratch = `<table><thead><tr><td>Material:</td><th><tt>${feature.getProperty(
-//         "name"
-//       )}</tt></tr></thead><tbody>`;
-//
-//       materialsScratch = feature.getProperty("substrates");
-//       weightsScratch = feature.getProperty("weights");
-//       tableHtmlScratch +=
-//         "<tr><td colspan='2' style='text-align: center;'><b>Substrates</b></td></tr>";
-//
-//       for (i = 0; i < materialsScratch.length; i++) {
-//         tableHtmlScratch += `<tr><td><tt>${materialsScratch[i].slice(
-//           3
-//         )}</tt></td><td style='text-align: right;'><tt>${
-//           weightsScratch[i]
-//         }%</tt></td></tr>`;
-//       }
-//       tableHtmlScratch += "</tbody></table>";
-//       metadataOverlay.innerHTML = tableHtmlScratch;
-//     } else {
-//       metadataOverlay.style.display = "none";
-//     }
-//
-//     if (isBuildingFeature) {
-//       // Highlight the feature if it's not already selected.
-//       if (feature !== selected.feature) {
-//         highlighted.feature = feature;
-//         Color.clone(feature.color, highlighted.originalColor);
-//         feature.color = Color.MAGENTA;
-//       }
-//     }
-//   }
-// }, ScreenSpaceEventType.MOUSE_MOVE);
-//
-// handler.setInputAction(function (movement) {
-//   // If a feature was previously selected, undo the highlight
-//   if (defined(selected.feature)) {
-//     selected.feature.color = selected.originalColor;
-//     selected.feature = undefined;
-//   }
-//
-//   const feature = viewer.scene.pick(movement.position);
-//   const featurePicked = feature instanceof Cesium3DTileFeature;
-//   const isBuildingFeature = featurePicked && feature.hasProperty("bagpandid");
-//
-//   if (isBuildingFeature) {
-//     // Select the feature if it's not already selected
-//     if (selected.feature === feature) {
-//       return;
-//     }
-//     selected.feature = feature;
-//
-//     // Save the selected feature's original color
-//     if (feature === highlighted.feature) {
-//       Color.clone(
-//         highlighted.originalColor,
-//         selected.originalColor
-//       );
-//       highlighted.feature = undefined;
-//     } else {
-//       Color.clone(feature.color, selected.originalColor);
-//     }
-//     feature.color = Color.LIME;
-//
-//     tableHtmlScratch = "<table class='cesium-infoBox-defaultTable'>";
-//     tableHtmlScratch +=
-//       "<tr><th>Property Name</th><th>ID</th><th>Type</th><th>Value</th></tr><tbody>";
-//     // const metadataClass =
-//     //   feature.content.batchTable._propertyTable.class;
-//     const propertyIds = feature.getPropertyIds();
-//     const length = propertyIds.length;
-//     for (let i = 0; i < length; ++i) {
-//       const propertyId = propertyIds[i];
-//
-//       // Skip these properties, since they are always empty.
-//       if (
-//         propertyId === "APID" ||
-//         propertyId === "FACC" ||
-//         propertyId === "RWID"
-//       ) {
-//         continue;
-//       }
-//
-//       const propertyValue = feature.getProperty(propertyId);
-//       // const property = metadataClass.properties[propertyId];
-//
-//       // const propertyType = defaultValue(
-//       //   property.componentType,
-//       //   property.type
-//       // );
-//       // tableHtmlScratch += `<tr style='font-family: monospace;' title='${property.description}'><th>${property.name}</th><th><b>${property.id}</b></th><td>${propertyType}</td><td>${propertyValue}</td></tr>`;
-//       tableHtmlScratch += `<tr style='font-family: monospace;' title='description'><th>name</th><th><b>ID</b></th><td>type</td><td>${propertyValue}</td></tr>`;
-//
-//     }
-//     tableHtmlScratch +=
-//       "<tr><th colspan='4'><i style='font-size:10px'>Hover on a row for description</i></th></tr></tbody></table>";
-//     viewer.selectedEntity.description = tableHtmlScratch;
-//   }
-// }, ScreenSpaceEventType.LEFT_CLICK);
-
-// // Hide the terrain metadata overlay when the mouse is over the info box, to prevent overlaps.
-// const infoBoxContainer = document
-//   .getElementsByClassName("cesium-viewer-infoBoxContainer")
-//   .item(0);
-// infoBoxContainer.onmouseover = function (e) {
-//   metadataOverlay.style.display = "none";
-// };
+tileset_buildings.readyPromise.then(function () {
+    viewer.zoomTo(
+        tileset_buildings,
+        new HeadingPitchRange(
+            0.0,
+            -0.5,
+            400
+            // tileset.boundingSphere.radius / 4.0
+        )
+    );
+});

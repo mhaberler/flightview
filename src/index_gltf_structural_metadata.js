@@ -42,7 +42,8 @@ function createTileset(subdirectory) {
 
   // Make sure that picking refers to the FEATURE_ID index that
   // is currently selected in the UI
-  currentTileset.featureIdLabel = currentActiveFeatureIdLabel;
+  // currentTileset.featureIdLabel = currentActiveFeatureIdLabel;
+  return currentTileset
 }
 
 // Create an HTML element that will serve as the
@@ -120,5 +121,6 @@ handler.setInputAction(function (movement) {
   showTooltip(screenX, screenY, tooltipText);
 }, ScreenSpaceEventType.MOUSE_MOVE);
 
-createTileset("MultipleFeatureIdsAndProperties");
+const current_tileset = createTileset("MultipleFeatureIdsAndProperties");
+console.log(current_tileset);
 
