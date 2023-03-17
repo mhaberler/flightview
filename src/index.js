@@ -131,22 +131,13 @@ handler.setInputAction(function (movement) {
 
     tableHtmlScratch = "<table class='cesium-infoBox-defaultTable'>";
     tableHtmlScratch +=
-        "<tr><th>Property Name</th><th>ID</th><th>Type</th><th>Value</th></tr><tbody>";
+        "<tr><th>ID</th><th>Type</th><th>Value</th></tr><tbody>";
     const metadataClass =
         feature.content.batchTable._propertyTable.class;
     const propertyIds = feature.getPropertyIds();
     const length = propertyIds.length;
     for (let i = 0; i < length; ++i) {
         const propertyId = propertyIds[i];
-
-        // Skip these properties, since they are always empty.
-        if (
-            propertyId === "APID" ||
-            propertyId === "FACC" ||
-            propertyId === "RWID"
-        ) {
-            continue;
-        }
 
         const propertyValue = feature.getProperty(propertyId);
         const property = metadataClass.properties[propertyId];
@@ -155,7 +146,7 @@ handler.setInputAction(function (movement) {
             property.componentType,
             property.type
         );
-        tableHtmlScratch += `<tr style='font-family: monospace;' title='${property.description}'><th>${property.name}</th><th><b>${property.id}</b></th><td>${propertyType}</td><td>${propertyValue}</td></tr>`;
+        tableHtmlScratch += `<tr style='font-family: monospace;' title='${property.description}'><th><b>${property.id}</b></th><td>${propertyType}</td><td>${propertyValue}</td></tr>`;
     }
     tableHtmlScratch +=
         "<tr><th colspan='4'><i style='font-size:10px'>Hover on a row for description</i></th></tr></tbody></table>";
