@@ -60,11 +60,6 @@ const handler = new ScreenSpaceEventHandler(viewer.scene.canvas);
 
 let tableHtmlScratch;
 
-const highlighted = {
-    feature: undefined,
-    originalColor: new Color(),
-};
-
 const selected = {
     feature: undefined,
     originalColor: new Color(),
@@ -114,55 +109,25 @@ function createFeatureHtml(title, feature) {
 
 handler.setInputAction(function (movement) {
     if (enablePicking) {
-        // If a feature was previously highlighted, undo the highlight
-        if (defined(highlighted.feature)) {
-            highlighted.feature.color = highlighted.originalColor;
-            highlighted.feature = undefined;
-        }
-
         const feature = viewer.scene.pick(movement.endPosition);
 
-        // Highlight the feature if it's not already selected.
         let tooltipText = "";
         tooltipText += createFeatureHtml("Feature", feature);
         const screenX = movement.endPosition.x;
         const screenY = movement.endPosition.y;
         showTooltip(screenX, screenY, tooltipText);
-        if (feature !== selected.feature) {
-            highlighted.feature = feature;
-            Color.clone(feature.color, highlighted.originalColor);
-            feature.color = Color.MAGENTA;
-        }
     }
 }, ScreenSpaceEventType.MOUSE_MOVE);
 
 handler.setInputAction(function (movement) {
-    // If a feature was previously selected, undo the highlight
-    if (defined(selected.feature)) {
-        selected.feature.color = selected.originalColor;
-        selected.feature = undefined;
-    }
-
     const feature = viewer.scene.pick(movement.position);
     const featurePicked = feature instanceof Cesium3DTileFeature;
 
-// Select the feature if it's not already selected
+    // Select the feature if it's not already selected
     if (selected.feature === feature) {
         return;
     }
     selected.feature = feature;
-
-// Save the selected feature's original color
-    if (feature === highlighted.feature) {
-        Color.clone(
-            highlighted.originalColor,
-            selected.originalColor
-        );
-        highlighted.feature = undefined;
-    } else {
-        Color.clone(feature.color, selected.originalColor);
-    }
-    feature.color = Color.LIME;
 
     tableHtmlScratch = "<table class='cesium-infoBox-defaultTable'>";
     tableHtmlScratch +=
