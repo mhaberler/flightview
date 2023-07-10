@@ -1,11 +1,13 @@
 import {
-    Viewer, Cesium3DTileset, createWorldTerrain, Cartesian3, Math,
+    Ion, Viewer, Cesium3DTileset, createWorldTerrain, Cartesian3, Math,
     Credit, Color, ScreenSpaceEventType, defined, defaultValue,
     ScreenSpaceEventHandler, Cesium3DTileFeature
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import "../src/css/main.css"
 import Logo3dgi from "../src/img/logo-3dgi.png"
+
+Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
