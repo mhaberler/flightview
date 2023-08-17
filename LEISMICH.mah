@@ -1,0 +1,20 @@
+
+git checkout -b test-cesium-3dtiles 3DGI/main
+
+fix index.js
+const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
+    // url: 'http://localhost:8003/tileset.json',
+    url: 'https://data.3dgi.xyz/3dtiles-test-data/tilesets/buildings/tileset.json',
+    enableDebugWireframe: false,
+    debugShowBoundingVolume: true,
+    debugShowContentBoundingVolume: false,
+}));
+
+
+rm -rf node_modules/
+npm install
+npm start
+
+
+
+
