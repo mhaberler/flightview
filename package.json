@@ -22,7 +22,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --config webpack.config.js --open",
-    "start_gltf": "webpack serve --config webpack.config_gltf_structural_metadata.js --open"
+    "start_gltf": "webpack serve --config webpack.config_gltf_structural_metadata.js --open",
+    "deploy": "npm run build && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/flightview2/"
   },
   "devDependencies": {
     "cesium": "1.106.1",

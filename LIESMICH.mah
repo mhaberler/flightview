@@ -15,6 +15,14 @@ rm -rf node_modules/
 npm install
 npm start
 
+# prod build
+npm run build 
+
+# upload
+npm run deploy
+
+https://static.mah.priv.at/apps/flightview2/?view=15.279520679150783%2C47.52513407380867%2C1363.3749108204972%2C60.23406292116273%2C-18.078516119207666%2C0.17517418615582006
+
 
 
 
