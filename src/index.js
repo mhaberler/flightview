@@ -43,8 +43,6 @@ import CesiumNavigation from 'cesium-navigation-es6';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import './css/main.css';
 import './css/mah.css';
-// import './css/CesiumViewer.css';
-// import './css/burner.css';
 
 import $ from 'jquery';
 import 'bootstrap';
@@ -204,7 +202,10 @@ let flightData = {}; // of viewer.selectedEntity
 let selectedTerrain = 1;
 const warpto = new JulianDate();
 
-Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3YmJlMzAyYy1hZTY4LTQ4OTUtYTIxMS02NTBlYzc1MDcxNTAiLCJpZCI6MTQ0MjAsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NjU0NzE5Mzl9.j9eQVA5txZG-lRmcUBEwgzRuAWzd0fPxgf5LmM_xNLU';
+// scope limited to https://static.mah.priv.at
+// Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZWQ3MjQwZC0wZjViLTQ1YzktODYyNi02M2EyNzA3ZTZmZGUiLCJpZCI6MTQ0MjAsImlhdCI6MTY5MjM4MTExNH0.ZdQS_J4spxZC5GsaI2SYgjxiPQsoT53IdINgaPoLDzQ';
+
+Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
 
 toolbar.style.display = 'none';
 
