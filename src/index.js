@@ -7,7 +7,8 @@ import "cesium/Build/Cesium/Widgets/widgets.css";
 import "../src/css/main.css"
 import Logo3dgi from "../src/img/logo-3dgi.png"
 
-Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+// Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3YmJlMzAyYy1hZTY4LTQ4OTUtYTIxMS02NTBlYzc1MDcxNTAiLCJpZCI6MTQ0MjAsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NjU0NzE5Mzl9.j9eQVA5txZG-lRmcUBEwgzRuAWzd0fPxgf5LmM_xNLU';
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
@@ -34,7 +35,7 @@ const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
     // url: 'http://localhost:8003/tileset.json',
     url: 'https://data.3dgi.xyz/3dtiles-test-data/tilesets/buildings/tileset.json',
     enableDebugWireframe: false,
-    debugShowBoundingVolume: true,
+    debugShowBoundingVolume: false,
     debugShowContentBoundingVolume: false,
 }));
 
