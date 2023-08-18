@@ -1,88 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>Flightview, Cesium + Bootstrap</title>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>Flightview, Cesium + Bootstrap</title>
 
 
-  </head>
-  <body>
+</head>
 
-    <div class="wrapper" >
+<body>
+
+  <div class="wrapper">
 
     <nav id="titlebar" class="navbar navbar-expand-lg  navbar-light bg-light collapse">
-        <div class="container-fluid">
+      <div class="container-fluid">
 
-          <a class="navbar-brand" href="#">Flightview</a>
-          <button class="navbar-toggler" type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarContent"
-                  aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <a class="navbar-brand" href="#">Flightview</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
-           <!-- data-toggle="collapse" -->
-           <!-- data-target=".navbar" -->
+    <!-- data-toggle="collapse" -->
+    <!-- data-target=".navbar" -->
 
-      <div id="cesiumContainer" >
-      </div>
-
-      <div id="toolbar" >
-
-        <table id="sensortable" class="table table-dark table-sm">
-
-          <tbody>
-            <tr>
-              <td>Course:</td>
-              <td class="sensorvalue"><span data-bind="text: course"></span>&deg;</td>
-            </tr>
-            <tr>
-              <td>Altitude:</td>
-              <td class="sensorvalue"><span data-bind="text: altitude"></span> m</td>
-            </tr>
-            <tr>
-              <td>Speed:</td>
-              <td class="sensorvalue"> <span data-bind="text: speed"></span> km/h</td>
-            </tr>
-
-            <tr id="temperatureRow" class="hiddenRow">
-              <td>Envelope:</td>
-              <td id="temperature" class="sensorvalue"></td>
-            </tr>
-            <tr id="burnersRow" class="hiddenRow">
-              <td>Burners:</td>
-              <td id="burners" class="sensorvalue"></td>
-            </tr>
-          </tbody>
-        </table>
-
-
-      </div>
+    <div id="cesiumContainer">
     </div>
 
-    <div id="loadingIndicator" class="spinner-border text-info" role="status">
-      <span class="visually-hidden">Loading...</span>
+    <div id="toolbar">
+
+      <table id="sensortable" class="table table-dark table-sm">
+
+        <tbody>
+          <tr>
+            <td>Course:</td>
+            <td class="sensorvalue"><span data-bind="text: course"></span>&deg;</td>
+          </tr>
+          <tr>
+            <td>Altitude:</td>
+            <td class="sensorvalue"><span data-bind="text: altitude"></span> m</td>
+          </tr>
+          <tr>
+            <td>Speed:</td>
+            <td class="sensorvalue"> <span data-bind="text: speed"></span> km/h</td>
+          </tr>
+
+          <tr id="temperatureRow" class="hiddenRow">
+            <td>Envelope:</td>
+            <td id="temperature" class="sensorvalue"></td>
+          </tr>
+          <tr id="burnersRow" class="hiddenRow">
+            <td>Burners:</td>
+            <td id="burners" class="sensorvalue"></td>
+          </tr>
+        </tbody>
+      </table>
+
+
     </div>
+  </div>
 
-    <!-- <div  id="loadingIndicator" class="loadingIndicator"></div> -->
+  <div id="loadingIndicator" class="spinner-border text-info" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 
-  </body>
+  <!-- <div  id="loadingIndicator" class="loadingIndicator"></div> -->
+
+</body>
+
 </html>
