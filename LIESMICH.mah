@@ -16,17 +16,26 @@ npm install
 npm start
 
 
-
-
-# prod build
+# local prod build -> dist
 npm run build 
+cd dist/
+http-server 
 
-# upload
+
+# prod build with new baseUrl and upload
+# see package.json for baseUrl
 npm run deploy
 
 https://static.mah.priv.at/apps/flightview2/?view=15.279520679150783%2C47.52513407380867%2C1363.3749108204972%2C60.23406292116273%2C-18.078516119207666%2C0.17517418615582006
 
 
+
+#---------------
+
+setting the baseUrl:
+
+webpack --config webpack.config.js --env baseUrl=\"/apps/flightview2\"
+webpack --config webpack.config.js 
 
 
 
