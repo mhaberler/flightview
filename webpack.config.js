@@ -5,7 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrotliPlugin = require('brotli-webpack-plugin');
+const zlib = require('browserify-zlib'); // require("zlib");
+const CompressionPlugin = require("compression-webpack-plugin");
 const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
 const gitRevisionPlugin = new GitRevisionPlugin();
 
@@ -46,11 +47,18 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new BrotliPlugin({
-                asset: '[path].br[query]',
+            new CompressionPlugin({
+                filename: "[path][base].br",
+                algorithm: "brotliCompress",
                 test: /\.(js|css|html|svg)$/,
+                compressionOptions: {
+                    params: {
+                        // [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+                    },
+                },
                 threshold: 10240,
                 minRatio: 0.8,
+                deleteOriginalAssets: false,
             }),
             new HtmlWebpackPlugin({
                 template: 'src/index.html'

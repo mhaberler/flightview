@@ -368,7 +368,7 @@ const terrainViewModels = createDefaultTerrainProviderViewModels();
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Sonny Austria 10m DEM qmesh@mah',
-    iconUrl: 'https://data.opendataportal.at/img/odp-logo.png',
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg',
     tooltip: 'Sonny 10m DEM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -385,7 +385,7 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Steiermark SE 1m Surface',
-    iconUrl: 'https://data.opendataportal.at/img/odp-logo.png', // Cesium.buildModuleUrl('Widgets/Images/TerrainProviders/STK.png'),
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg', // Cesium.buildModuleUrl('Widgets/Images/TerrainProviders/STK.png'),
     tooltip: 'Steiermark SE 1m DSM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -402,14 +402,78 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Steiermark SE 1m Terrain',
-    iconUrl: 'https://data.opendataportal.at/img/odp-logo.png', // Cesium.buildModuleUrl('Widgets/Images/TerrainProviders/STK.png'),
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg', 
     tooltip: 'Steiermark SE 1m DTM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
       url: 'https://static.mah.priv.at/tilesets/dgm-1m-stmk-se',
       requestWaterMask: true,
       requestVertexNormals: true,
-      credit: new Credit('<a href="https://data.opendataportal.at/dataset/dtm-austria" target="_blank">Source: Austria 10m DEM by Sonny</a>',
+      credit: new Credit('<a>Source: Austria 10m DEM by Sonny</a>',
+        true),
+    }),
+  }),
+);
+
+terrainViewModels.push(
+  new ProviderViewModel({
+    name: 'CH 10m Terrain',
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/CH.svg', 
+    tooltip: 'Steiermark SE 1m DTM',
+    category: 'Other',
+    creationFunction: () => new CesiumTerrainProvider({
+      url: 'https://static.mah.priv.at/tilesets/ch-10m',
+      requestWaterMask: true,
+      requestVertexNormals: true,
+      credit: new Credit('<a>Source: Switzerland 10m DEM by Sonny</a>',
+        true),
+    }),
+  }),
+);
+
+terrainViewModels.push(
+  new ProviderViewModel({
+    name: 'CZ 10m Terrain',
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/CZ.svg', 
+    tooltip: 'Czechia 20m DTM',
+    category: 'Other',
+    creationFunction: () => new CesiumTerrainProvider({
+      url: 'https://static.mah.priv.at/tilesets/cz-20m',
+      requestWaterMask: true,
+      requestVertexNormals: true,
+      credit: new Credit('<a>Source: Czechia 20m DEM by Sonny</a>',
+        true),
+    }),
+  }),
+);
+
+terrainViewModels.push(
+  new ProviderViewModel({
+    name: 'SI 20m Terrain',
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/SI.svg', 
+    tooltip: 'Slovenia 20m DTM',
+    category: 'Other',
+    creationFunction: () => new CesiumTerrainProvider({
+      url: 'https://static.mah.priv.at/tilesets/si-20m',
+      requestWaterMask: true,
+      requestVertexNormals: true,
+      credit: new Credit('<a>Source: Slovenia 20m DEM by Sonny</a>',
+        true),
+    }),
+  }),
+);
+
+terrainViewModels.push(
+  new ProviderViewModel({
+    name: 'IT 20m Terrain',
+    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/IT.svg', 
+    tooltip: 'Italy 20m DTM',
+    category: 'Other',
+    creationFunction: () => new CesiumTerrainProvider({
+      url: 'https://static.mah.priv.at/tilesets/it-20m',
+      requestWaterMask: true,
+      requestVertexNormals: true,
+      credit: new Credit('<a>Source: Italy 20m DEM by Sonny</a>',
         true),
     }),
   }),
