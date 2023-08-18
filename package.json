@@ -16,13 +16,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/3DGI/test-cesium-3dtiles.git"
+    "url": "https://github.com/mhaberler/flightview.git"
   },
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --config webpack.config.js --open",
-    "start_gltf": "webpack serve --config webpack.config_gltf_structural_metadata.js --open",
     "deploy": "webpack --config webpack.config.js --env production --env baseUrl=/apps/flightview2 && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/flightview2/"
   },
   "devDependencies": {
