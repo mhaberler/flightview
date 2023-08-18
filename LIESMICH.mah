@@ -10,10 +10,13 @@ const tileset_buildings = viewer.scene.primitives.add(new Cesium3DTileset({
     debugShowContentBoundingVolume: false,
 }));
 
-
+# dev
 rm -rf node_modules/
 npm install
 npm start
+
+
+
 
 # prod build
 npm run build 
