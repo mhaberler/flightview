@@ -5,12 +5,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
+const gitRevisionPlugin = new GitRevisionPlugin();
 
 module.exports = (env) => {
     // see https://webpack.js.org/guides/environment-variables/
     let baseUrl = '';
     if (env.baseUrl) {
-        baseUrl = env.baseUrl;      
+        baseUrl = env.baseUrl;
     }
     console.log(`setting baseUrl to ${baseUrl}`);
     return {
@@ -43,6 +46,12 @@ module.exports = (env) => {
             ]
         },
         plugins: [
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.(js|css|html|svg)$/,
+                threshold: 10240,
+                minRatio: 0.8,
+            }),
             new HtmlWebpackPlugin({
                 template: 'src/index.html'
             }),
@@ -58,7 +67,14 @@ module.exports = (env) => {
             new webpack.DefinePlugin({
                 // Define relative base path in cesium for loading assets
                 CESIUM_BASE_URL: JSON.stringify(baseUrl)
-            })
+            }),
+            gitRevisionPlugin,
+            new webpack.DefinePlugin({
+                VERSION: JSON.stringify(gitRevisionPlugin.version()),
+                COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
+                BRANCH: JSON.stringify(gitRevisionPlugin.branch()),
+                LASTCOMMITDATETIME: JSON.stringify(gitRevisionPlugin.lastcommitdatetime()),
+            }),
         ],
         mode: 'development',
         devtool: 'eval',
