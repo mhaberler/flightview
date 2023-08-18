@@ -3,6 +3,7 @@ import {
   Cartographic,
   Credit,
   CzmlDataSource,
+  GpxDataSource,
   GeoJsonDataSource,
   HeadingPitchRoll,
   Ion,
@@ -701,6 +702,8 @@ if (defined(source)) {
       sourceType = 'geojson';
     } else if (/\.kml$/i.test(source) || /\.kmz$/i.test(source)) {
       sourceType = 'kml';
+    } else if (/\.gpx$/i.test(source)) {
+      sourceType = 'gpx';
     }
   }
 
@@ -709,6 +712,8 @@ if (defined(source)) {
     loadPromise = CzmlDataSource.load(source);
   } else if (sourceType === 'geojson') {
     loadPromise = GeoJsonDataSource.load(source);
+  } else if (sourceType === 'gpx') {
+    loadPromise = GpxDataSource.load(source);
   } else if (sourceType === 'kml') {
     loadPromise = KmlDataSource.load(source, {
       camera: scene.camera,
