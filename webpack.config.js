@@ -23,11 +23,17 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/,
-            use: [ 'style-loader', 'css-loader' ]
+            use: ['style-loader', 'css-loader']
         }, {
             test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
-            use: [ 'url-loader' ]
-        }]
+            use: ['url-loader']
+        },
+        {
+            test: /\.json$/,
+            use: ['json-loader'],
+            type: 'javascript/auto',
+        },
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -39,7 +45,7 @@ module.exports = {
                 { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
                 { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                 { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' },
-		{ from: path.join(cesiumSource, 'ThirdParty'), to: 'ThirdParty' }
+                { from: path.join(cesiumSource, 'ThirdParty'), to: 'ThirdParty' }
             ]
         }),
         new webpack.DefinePlugin({

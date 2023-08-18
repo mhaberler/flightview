@@ -1,0 +1,14 @@
+
+.sensorvalue  {
+    /* border: 5px outset red; */
+    /* background-color: lightblue; */
+    /* text-align: center; */
+    color: white;
+    text-align:right;
+    white-space:nowrap;
+    width: 70px;
+}
+
+.hiddenRow {
+       display: none;
+}

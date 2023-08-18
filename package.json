@@ -35,5 +35,11 @@
     "webpack": "^5.76.3",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "cesium-navigation-es6": "github:mhaberler/cesium-navigation-es6",
+    "formatcoords": "^1.1.3",
+    "json-loader": "^0.5.7"
   }
 }

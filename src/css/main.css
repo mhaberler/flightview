@@ -1,21 +1,78 @@
-html, body, #cesiumContainer {
-	width: 100%;
+html, body {
 	height: 100%;
 	margin: 0;
+	/* overflow: hidden; */
 	padding: 0;
-	overflow: hidden;
+	width: 100%;
+        background: #000;
 }
 
-/* .cesium-widget-credits{
-	display:none !important;
-} */
-
-.creditContainer {
-	width: 175;
-	height: 83px;
-	position: fixed;
-	z-index: 99999;
-	/* background: url(https://3dgi.nl/img/Logo-02-white.png) 100% 100% no-repeat;
-	background-size: cover; */
-	top: 0px;
+#cesiumContainer {
+	height: 100%;
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+        display: flex;
+        z-index: 0;
 }
+
+.wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+.loadingIndicator {
+  display: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -33px;
+  margin-left: -33px;
+  width: 66px;
+  height: 66px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../img/ajax-loader.gif);
+  z-index: 2;
+}
+
+
+.distance-legend {
+  /* pointer-events: auto; */
+  /* position: absolute; */
+  /* border-radius: 15px; */
+  /* padding-left: 5px; */
+  /* padding-right: 5px; */
+  bottom: 120px;
+  /* height: 30px; */
+  /* width: 125px; */
+  /* box-sizing: content-box; */
+}
+
+
+
+#toolbar {
+  z-index: 1;
+  margin: 5px;
+  padding: 2px 5px;
+  position: absolute;
+}
+
+
+/* #burner { */
+/*     position: relative; */
+/*     width: 5em; */
+/*     height: 5em; */
+/*     border: 2px solid #000; */
+/*     border-radius: 2.5em; */
+/*     background-image: radial-gradient(farthest-corner at 50% 20%, #b30000 0%, #330000 100%); */
+/*     box-shadow: 0 0.5em 1em rgba(102, 0, 0, 0.1); */
+/* } */
+
+/* #burner.on { */
+/*     background-image: radial-gradient(farthest-corner at 50% 75%, red 0%, #990000 100%); */
+/*     box-shadow: 0 1em 1.5em rgba(255, 128, 0, 0.8); */
+/* } */
