@@ -370,7 +370,7 @@ const terrainViewModels = createDefaultTerrainProviderViewModels();
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Sonny Austria 10m DEM qmesh@mah',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg',
+    iconUrl: "flags/3x2/AT.svg",
     tooltip: 'Sonny 10m DEM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -387,7 +387,7 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Steiermark SE 1m Surface',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg', // Cesium.buildModuleUrl('Widgets/Images/TerrainProviders/STK.png'),
+    iconUrl: "flags/3x2/AT.svg",
     tooltip: 'Steiermark SE 1m DSM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -404,7 +404,7 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Steiermark SE 1m Terrain',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg', 
+    iconUrl: "flags/3x2/AT.svg",
     tooltip: 'Steiermark SE 1m DTM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -420,8 +420,8 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'CH 10m Terrain',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/CH.svg', 
-    tooltip: 'Steiermark SE 1m DTM',
+    iconUrl: "flags/3x2/CH.svg",
+    tooltip: 'Switzerland 10m DTM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
       url: 'https://static.mah.priv.at/tilesets/ch-10m',
@@ -436,7 +436,7 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'CZ 10m Terrain',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/CZ.svg', 
+    iconUrl: "flags/3x2/CZ.svg",
     tooltip: 'Czechia 20m DTM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -452,7 +452,7 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'SI 20m Terrain',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/SI.svg', 
+    iconUrl: "flags/3x2/SI.svg",
     tooltip: 'Slovenia 20m DTM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({
@@ -468,7 +468,7 @@ terrainViewModels.push(
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'IT 20m Terrain',
-    iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/IT.svg', 
+    iconUrl: "flags/3x2/IT.svg",
     tooltip: 'Italy 20m DTM',
     category: 'Other',
     creationFunction: () => new CesiumTerrainProvider({

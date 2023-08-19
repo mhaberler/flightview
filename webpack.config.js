@@ -5,10 +5,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const zlib = require('browserify-zlib'); 
+const zlib = require('browserify-zlib');
 const CompressionPlugin = require("compression-webpack-plugin");
 const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
 const gitRevisionPlugin = new GitRevisionPlugin();
+const countryFlagIcons = 'node_modules/country-flag-icons';
 
 // options:
 // --env production
@@ -21,13 +22,13 @@ module.exports = (env) => {
     // see https://webpack.js.org/guides/environment-variables/
     let baseUrl = env.baseUrl ? env.baseUrl : '';
     // default to Ion.defaultAccessToken
-    let ionToken =  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+    let ionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
 
     console.log(`setting baseUrl to '${baseUrl}'`);
     if (env.production) {
         console.log(`compressing assets`);
         // scope limited to https://static.mah.priv.at
-        ionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZWQ3MjQwZC0wZjViLTQ1YzktODYyNi02M2EyNzA3ZTZmZGUiLCJpZCI6MTQ0MjAsImlhdCI6MTY5MjM4MTExNH0.ZdQS_J4spxZC5GsaI2SYgjxiPQsoT53IdINgaPoLDzQ';        
+        ionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZWQ3MjQwZC0wZjViLTQ1YzktODYyNi02M2EyNzA3ZTZmZGUiLCJpZCI6MTQ0MjAsImlhdCI6MTY5MjM4MTExNH0.ZdQS_J4spxZC5GsaI2SYgjxiPQsoT53IdINgaPoLDzQ';
     }
     return {
         context: __dirname,
@@ -81,7 +82,10 @@ module.exports = (env) => {
                     { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
                     { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                     { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' },
-                    { from: path.join(cesiumSource, 'ThirdParty'), to: 'ThirdParty' }
+                    { from: path.join(cesiumSource, 'ThirdParty'), to: 'ThirdParty' },
+                    // Copy flag icons a static directory
+                    { from: path.join(countryFlagIcons, '/3x2'), to: 'flags/3x2' },
+
                 ]
             }),
             new webpack.DefinePlugin({
