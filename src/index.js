@@ -206,7 +206,9 @@ const warpto = new JulianDate();
 // scope limited to https://static.mah.priv.at
 // Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZWQ3MjQwZC0wZjViLTQ1YzktODYyNi02M2EyNzA3ZTZmZGUiLCJpZCI6MTQ0MjAsImlhdCI6MTY5MjM4MTExNH0.ZdQS_J4spxZC5GsaI2SYgjxiPQsoT53IdINgaPoLDzQ';
 
-Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+// Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+
+Ion.defaultAccessToken = CESIUM_ION_TOKEN;
 
 toolbar.style.display = 'none';
 
@@ -336,7 +338,7 @@ buildModuleUrl.getCesiumBaseUrl();
 imageryViewModels.push(
   new ProviderViewModel({
     name: 'Austria Basemap',
-    iconUrl: 'http://www.geoland.at/assets/images/IndexGrid/basemap_hover_en.png',
+    iconUrl: 'https://www.geoland.at/assets/images/IndexGrid/basemap_hover_en.png',
     tooltip: 'Austrian OGD Basemap.\nhttps://www.basemap.at/index_en.html',
     creationFunction() {
       return new WebMapTileServiceImageryProvider({
