@@ -483,6 +483,22 @@ terrainViewModels.push(
   }),
 );
 
+terrainViewModels.push(
+  new ProviderViewModel({
+    name: 'DE 20m Terrain',
+    iconUrl: "flags/3x2/DE.svg",
+    tooltip: 'Germany 20m DTM',
+    category: 'Other',
+    creationFunction: () => new CesiumTerrainProvider({
+      url: 'https://static.mah.priv.at/tilesets/de-20m',
+      requestWaterMask: true,
+      requestVertexNormals: true,
+      credit: new Credit('<a>Source: Germany 20m DEM by Sonny</a>',
+        true),
+    }),
+  }),
+);
+
 if (defined(terrain) && !Number.isNaN(terrain)) {
   selectedTerrain = parseInt(terrain, 10);
 }
