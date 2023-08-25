@@ -37,6 +37,7 @@ import {
   createDefaultTerrainProviderViewModels,
   IonResource,
   TimeStandard,
+  sampleTerrain
 } from 'cesium';
 
 import Compass from "@cesium-extends/compass";
@@ -580,6 +581,8 @@ viewer.selectedEntityChanged.addEventListener((selectedEntity) => {
 
       v.location = ko.computed(() => formatcoords(v.lat(), v.lon()).format('Xd'), v);
 
+      v.agl = ko.observable(0).extend({ numeric: 0 });
+
       if (!position.isConstant) {
         // if positon varies, we have speed and course
 
@@ -647,8 +650,17 @@ viewer.clock.onTick.addEventListener((clock) => {
     if (defined(c)) {
       Cartographic.fromCartesian(c, Ellipsoid.WGS84, tmpCarto);
       viewModel.altitude(tmpCarto.height);
-      viewModel.lat(CM.toDegrees(tmpCarto.latitude));
-      viewModel.lon(CM.toDegrees(tmpCarto.longitude));
+      const lat = CM.toDegrees(tmpCarto.latitude);
+      const lon = CM.toDegrees(tmpCarto.longitude);
+      viewModel.lat(lat);
+      viewModel.lon(lon);
+      sampleTerrain(viewer.terrainProvider, 9, [Cartographic.fromDegrees(lon, lat)]).
+        then((samples) => {
+          if (Math.abs(samples[0].height) > 0.1) {
+            // console.log('AGL in meters is: ' + (tmpCarto.height - samples[0].height));
+            viewModel.agl(tmpCarto.height - samples[0].height);
+          }
+        });
     }
   }
 
@@ -823,7 +835,7 @@ if (defined(nav)) {
   });
   const zoomController = new ZoomController(viewer, {
     // Stiwoll 75
-    home: new Cartesian3.fromDegrees(15.211986252816368, 47.12936449368258, 50000) 
+    home: new Cartesian3.fromDegrees(15.211986252816368, 47.12936449368258, 50000)
     // , tips: {
     //   zoomIn: "North",
     //   zoomOut: "North",

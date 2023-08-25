@@ -13,6 +13,11 @@ const wksensors = {
     digits: 0,
     unit: 'm',
   },
+  agl: {
+    tag: 'AGL:',
+    digits: 0,
+    unit: 'm',
+  },
   speed: {
     tag: 'Speed:',
     digits: 0,
