@@ -26,10 +26,12 @@ http-server
 # see package.json for baseUrl
 npm run deploy
 
-https://static.mah.priv.at/apps/flightview2/?view=15.279520679150783%2C47.52513407380867%2C1363.3749108204972%2C60.23406292116273%2C-18.078516119207666%2C0.17517418615582006
+https://static.mah.priv.at/apps/flightview2/?view=15.279520679150783%2C47.52513407380867%2C1363.3749108204972%2C60.23406292116273%2C-18.078516119207666%2C0.17517418615582006&nav=1
+
+Kehrer https://static.mah.priv.at/apps/flightview2/?view=15.212897979628188%2C47.126512986956364%2C860.2642244077152%2C349.4987633031491%2C-12.885428118742357%2C359.99967983463097&nav=1&multiplier=1&startAt=0&imagery=13&terrain=2
 
 
-
+source=https://static.mah.priv.at/cors/20210509-Stiwoll-Kumberg.czml
 #---------------
 
 setting the baseUrl:

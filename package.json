@@ -21,7 +21,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack serve --config webpack.config.js --open",
+    "start": "webpack serve --config webpack.config.js --env baseUrl=\"\" --open",
     "deploy": "webpack --config webpack.config.js --env production --env baseUrl=/apps/flightview2 && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/flightview2/"
   },
   "devDependencies": {
@@ -38,8 +38,9 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@cesium-extends/compass": "^1.1.0",
+    "@cesium-extends/zoom-control": "^1.1.0",
     "bootstrap": "^4.6.2",
-    "cesium-navigation-es6": "github:mhaberler/cesium-navigation-es6",
     "country-flag-icons": "^1.5.7",
     "formatcoords": "^1.1.3",
     "git-revision-webpack-plugin": "^5.0.0",

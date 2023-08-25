@@ -39,7 +39,8 @@ import {
   TimeStandard,
 } from 'cesium';
 
-import CesiumNavigation from 'cesium-navigation-es6';
+import Compass from "@cesium-extends/compass";
+import ZoomController from "@cesium-extends/zoom-control";
 
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import './css/main.css';
@@ -806,14 +807,28 @@ viewer.dataSources.dataSourceAdded.addEventListener((
   dataSourceLoaded(dataSource);
 });
 
-if (defined(nav)) {
-  const options = {};
-  // options.defaultResetView = Rectangle.fromDegrees(80, 22, 130, 50);
-  options.enableCompass = true;
-  options.enableZoomControls = true;
-  options.enableDistanceLegend = true;
-  options.enableCompassOuterRing = true;
 
-  CesiumNavigation(viewer, options);
+if (defined(nav)) {
+  // const options = {};
+  // // options.defaultResetView = Rectangle.fromDegrees(80, 22, 130, 50);
+  // options.enableCompass = true;
+  // options.enableZoomControls = true;
+  // options.enableDistanceLegend = true;
+  // options.enableCompassOuterRing = true;
+  const compass = new Compass(viewer, {
+    tips: {
+      inner: "North",
+      outer: "Rotate",
+    }
+  });
+  const zoomController = new ZoomController(viewer, {
+    // Stiwoll 75
+    home: new Cartesian3.fromDegrees(15.211986252816368, 47.12936449368258, 50000) 
+    // , tips: {
+    //   zoomIn: "North",
+    //   zoomOut: "North",
+    //   refresh: "Rotate"
+    // }
+  });
 }
 
