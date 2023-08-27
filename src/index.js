@@ -370,15 +370,14 @@ if (defined(imagery)) {
 
 const terrainViewModels = createDefaultTerrainProviderViewModels();
 
-// self-hosted
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Sonny Austria 10m DEM qmesh@mah',
     iconUrl: "flags/3x2/AT.svg",
     tooltip: 'Sonny 10m DEM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/austria-10m-sonnyy',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/austria-10m-sonnyy', {
+
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a href="https://data.opendataportal.at/dataset/dtm-austria" target="_blank">Source: Austria 10m DEM by Sonny</a>',
@@ -394,8 +393,7 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/AT.svg",
     tooltip: 'Steiermark SE 1m DSM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/dhm-1m-stmk-se',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/dhm-1m-stmk-se', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a href="https://data.opendataportal.at/dataset/dtm-austria" target="_blank">Source: Austria 10m DEM by Sonny</a>',
@@ -411,8 +409,7 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/AT.svg",
     tooltip: 'Steiermark SE 1m DTM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/dgm-1m-stmk-se',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/dgm-1m-stmk-se', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a>Source: Austria 10m DEM by Sonny</a>',
@@ -427,8 +424,7 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/CH.svg",
     tooltip: 'Switzerland 10m DTM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/ch-10m',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/ch-10m', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a>Source: Switzerland 10m DEM by Sonny</a>',
@@ -443,8 +439,8 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/CZ.svg",
     tooltip: 'Czechia 20m DTM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/cz-20m',
+    creationFunction: () => CesiumTerrainProvider.fromUrl(
+      'https://static.mah.priv.at/tilesets/cz-20m', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a>Source: Czechia 20m DEM by Sonny</a>',
@@ -459,8 +455,7 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/SI.svg",
     tooltip: 'Slovenia 20m DTM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/si-20m',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/si-20m', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a>Source: Slovenia 20m DEM by Sonny</a>',
@@ -475,8 +470,7 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/IT.svg",
     tooltip: 'Italy 20m DTM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/it-20m',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/it-20m', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a>Source: Italy 20m DEM by Sonny</a>',
@@ -491,8 +485,7 @@ terrainViewModels.push(
     iconUrl: "flags/3x2/DE.svg",
     tooltip: 'Germany 20m DTM',
     category: 'Other',
-    creationFunction: () => new CesiumTerrainProvider({
-      url: 'https://static.mah.priv.at/tilesets/de-20m',
+    creationFunction: () => CesiumTerrainProvider.fromUrl('https://static.mah.priv.at/tilesets/de-20m', {
       requestWaterMask: true,
       requestVertexNormals: true,
       credit: new Credit('<a>Source: Germany 20m DEM by Sonny</a>',
@@ -531,7 +524,7 @@ try {
     const { viewModel } = viewer.baseLayerPicker;
     viewModel.selectedTerrain = viewModel.terrainProviderViewModels[selectedTerrain];
   } else {
-    viewer.terrainProvider = createWorldTerrain({
+    viewer.terrainProvider = await createWorldTerrainAsync({
       requestWaterMask: true,
       requestVertexNormals: true,
     });
@@ -554,7 +547,7 @@ if (defined(endUserOptions.inspector)) {
 
 viewer.selectedEntityChanged.addEventListener((selectedEntity) => {
   if (defined(selectedEntity)) {
-    console.log('Selected ', selectedEntity.name);
+    // console.log('Selected ', selectedEntity.name);
     endUserOptions.lookAt = selectedEntity.id;
     viewer.trackedEntity = selectedEntity;
     // selectedEntity.viewFrom = viewFromC3;
@@ -621,7 +614,7 @@ viewer.selectedEntityChanged.addEventListener((selectedEntity) => {
     // show toolbar
     toolbar.style.display = 'block';
   } else {
-    console.log('Deselected.');
+    // console.log('Deselected.');
     delete endUserOptions.lookAt;
     ko.cleanNode(toolbar);
     flightData = {}; // clear current observations
@@ -800,6 +793,7 @@ function saveState() {
     viewer.clock.startTime);
   endUserOptions.imagery = imageryViewModels.indexOf(viewer.baseLayerPicker.viewModel.selectedImagery);
   endUserOptions.terrain = terrainViewModels.indexOf(viewer.baseLayerPicker.viewModel.selectedTerrain);
+  // console.log("endUserOptions.terrain" + endUserOptions.terrain);
   if (viewer.clockViewModel.shouldAnimate) {
     endUserOptions.autostart = true;
   } else {
