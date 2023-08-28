@@ -337,6 +337,7 @@ const imageryViewModels = createDefaultImageryProviderViewModels();
 // since we're fiddling the href
 buildModuleUrl.getCesiumBaseUrl();
 
+// https://gis.stmk.gv.at/image/services/OGD_DOP/Orthofotos_akt/ImageServer/WMSServer
 imageryViewModels.push(
   new ProviderViewModel({
     name: 'Austria Basemap',
@@ -344,12 +345,12 @@ imageryViewModels.push(
     tooltip: 'Austrian OGD Basemap.\nhttps://www.basemap.at/index_en.html',
     creationFunction() {
       return new WebMapTileServiceImageryProvider({
-        url: 'https://maps{s}.wien.gv.at/basemap/bmaporthofoto30cm/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg',
+        url: 'https://mapsneu.wien.gv.at/basemap/bmaporthofoto30cm/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg',
         layer: 'bmaporthofoto30cm',
         style: 'normal',
         format: 'image/jpeg',
         tileMatrixSetID: 'google3857',
-        subdomains: '1234',
+        // subdomains: '1234',
         maximumLevel: 19,
         rectangle: Rectangle.fromDegrees(8.782379, 46.35877, 17.5, 49.037872),
         credit: new Credit(
@@ -360,6 +361,8 @@ imageryViewModels.push(
     },
   }),
 );
+
+
 // Select one from the existing list to be currently active.
 let selectedImagery;
 if (defined(imagery)) {
@@ -369,6 +372,8 @@ if (defined(imagery)) {
 }
 
 const terrainViewModels = createDefaultTerrainProviderViewModels();
+
+
 
 terrainViewModels.push(
   new ProviderViewModel({
