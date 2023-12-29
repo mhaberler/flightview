@@ -38,8 +38,8 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@cesium-extends/compass": "^1.1.0",
-    "@cesium-extends/zoom-control": "^1.1.0",
+    "@cesium-extends/compass": "^1.1.1",
+    "@cesium-extends/zoom-control": "^1.1.1",
     "bootstrap": "^4.6.2",
     "country-flag-icons": "^1.5.7",
     "formatcoords": "^1.1.3",
