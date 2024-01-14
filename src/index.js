@@ -375,6 +375,23 @@ const terrainViewModels = createDefaultTerrainProviderViewModels();
 
 
 
+// terrainViewModels.push(
+//   new ProviderViewModel({
+//     name: 'ALS',
+//     iconUrl: "flags/3x2/AT.svg",
+//     tooltip: 'ALS',
+//     category: 'Other',
+//     creationFunction: () => CesiumTerrainProvider.fromUrl('http://172.16.0.106:8083', {
+
+//       requestWaterMask: true,
+//       requestVertexNormals: true,
+//       credit: new Credit('<a href="https://data.opendataportal.at/dataset/dtm-austria" target="_blank">Source: Austria 10m DEM by Sonny</a>',
+//         true),
+//     }),
+//   }),
+// );
+
+
 terrainViewModels.push(
   new ProviderViewModel({
     name: 'Sonny Austria 10m DEM qmesh@mah',
@@ -755,10 +772,11 @@ if (defined(source)) {
   //    setViewFromC3(endUserOptions.viewFrom);
 
   if (defined(loadPromise)) {
+    loadPromise.catch((error) => {
+      showLoadError(source, error);
+    });
     viewer.dataSources.add(loadPromise).then((dataSource) => {
       dataSourceLoaded(dataSource);
-    }).otherwise((error) => {
-      showLoadError(source, error);
     });
   }
 }
