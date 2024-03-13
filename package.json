@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "browserify-zlib": "^0.2.0",
-    "cesium": "1.112.0",
+    "cesium": "1.115.0",
     "compression-webpack-plugin": "^10.0.0",
     "copy-webpack-plugin": "^9.1.0",
     "css-loader": "^6.8.1",
